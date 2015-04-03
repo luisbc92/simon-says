@@ -1,0 +1,1672 @@
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    1
+
+       1            ;******************************************************************************
+       2            ;* MSP430 C/C++ Codegen                                             PC v4.0.0 *
+       3            ;* Date/Time created: Tue Apr 16 11:04:09 2013                                *
+       4            ;******************************************************************************
+       5                    .compiler_opts --abi=coffabi --hll_source=on --mem_model:code=small --mem_model:data=small --o
+       6            
+       7            $C$DW$CU        .dwtag  DW_TAG_compile_unit
+       8                    .dwattr $C$DW$CU, DW_AT_name("../lcdLib.c")
+       9                    .dwattr $C$DW$CU, DW_AT_producer("MSP430 C/C++ Codegen PC v4.0.0 Copyright (c) 2003-2011 Texas
+      10                    .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      11                    .dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\Luiz\Google Drive\School_Work\2013 Spring\EE 3376 -
+      12            ;*****************************************************************************
+      13            ;* CINIT RECORDS                                                             *
+      14            ;*****************************************************************************
+      15 000000               .sect   ".cinit"
+      16                    .align  2
+      17 000000 0020          .field          $C$IR_1,16
+      18 000002 0000!         .field          lcdBuffer+0,16
+      19 000004 0020          .field  32,8                    ; lcdBuffer[0] @ 0
+      20 000004 2020          .field  32,8                    ; lcdBuffer[1] @ 8
+      21 000006 0020          .field  32,8                    ; lcdBuffer[2] @ 16
+      22 000006 2020          .field  32,8                    ; lcdBuffer[3] @ 24
+      23 000008 0020          .field  32,8                    ; lcdBuffer[4] @ 32
+      24 000008 2020          .field  32,8                    ; lcdBuffer[5] @ 40
+      25 00000a 0020          .field  32,8                    ; lcdBuffer[6] @ 48
+      26 00000a 2020          .field  32,8                    ; lcdBuffer[7] @ 56
+      27 00000c 0020          .field  32,8                    ; lcdBuffer[8] @ 64
+      28 00000c 2020          .field  32,8                    ; lcdBuffer[9] @ 72
+      29 00000e 0020          .field  32,8                    ; lcdBuffer[10] @ 80
+      30 00000e 2020          .field  32,8                    ; lcdBuffer[11] @ 88
+      31 000010 0020          .field  32,8                    ; lcdBuffer[12] @ 96
+      32 000010 2020          .field  32,8                    ; lcdBuffer[13] @ 104
+      33 000012 0020          .field  32,8                    ; lcdBuffer[14] @ 112
+      34 000012 2020          .field  32,8                    ; lcdBuffer[15] @ 120
+      35 000014 0020          .field  32,8                    ; lcdBuffer[16] @ 128
+      36 000014 2020          .field  32,8                    ; lcdBuffer[17] @ 136
+      37 000016 0020          .field  32,8                    ; lcdBuffer[18] @ 144
+      38 000016 2020          .field  32,8                    ; lcdBuffer[19] @ 152
+      39 000018 0020          .field  32,8                    ; lcdBuffer[20] @ 160
+      40 000018 2020          .field  32,8                    ; lcdBuffer[21] @ 168
+      41 00001a 0020          .field  32,8                    ; lcdBuffer[22] @ 176
+      42 00001a 2020          .field  32,8                    ; lcdBuffer[23] @ 184
+      43 00001c 0020          .field  32,8                    ; lcdBuffer[24] @ 192
+      44 00001c 2020          .field  32,8                    ; lcdBuffer[25] @ 200
+      45 00001e 0020          .field  32,8                    ; lcdBuffer[26] @ 208
+      46 00001e 2020          .field  32,8                    ; lcdBuffer[27] @ 216
+      47 000020 0020          .field  32,8                    ; lcdBuffer[28] @ 224
+      48 000020 2020          .field  32,8                    ; lcdBuffer[29] @ 232
+      49 000022 0020          .field  32,8                    ; lcdBuffer[30] @ 240
+      50 000022 2020          .field  32,8                    ; lcdBuffer[31] @ 248
+      51      0020  $C$IR_1:        .set    32
+      52            
+      53            
+      54            $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("__delay_cycles")
+      55                    .dwattr $C$DW$1, DW_AT_TI_symbol_name("__delay_cycles")
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    2
+
+      56                    .dwattr $C$DW$1, DW_AT_declaration
+      57                    .dwattr $C$DW$1, DW_AT_external
+      58            $C$DW$2 .dwtag  DW_TAG_formal_parameter
+      59                    .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$13)
+      60                    .dwendtag $C$DW$1
+      61            
+      62            $C$DW$3 .dwtag  DW_TAG_variable, DW_AT_name("P2OUT")
+      63                    .dwattr $C$DW$3, DW_AT_TI_symbol_name("P2OUT")
+      64                    .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$28)
+      65                    .dwattr $C$DW$3, DW_AT_declaration
+      66                    .dwattr $C$DW$3, DW_AT_external
+      67            $C$DW$4 .dwtag  DW_TAG_variable, DW_AT_name("P2DIR")
+      68                    .dwattr $C$DW$4, DW_AT_TI_symbol_name("P2DIR")
+      69                    .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$28)
+      70                    .dwattr $C$DW$4, DW_AT_declaration
+      71                    .dwattr $C$DW$4, DW_AT_external
+      72                    .global lcdBuffer
+      73 000000               .bss    lcdBuffer,32,2
+      74            $C$DW$5 .dwtag  DW_TAG_variable, DW_AT_name("lcdBuffer")
+      75                    .dwattr $C$DW$5, DW_AT_TI_symbol_name("lcdBuffer")
+      76                    .dwattr $C$DW$5, DW_AT_location[DW_OP_addr lcdBuffer]
+      77                    .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$34)
+      78                    .dwattr $C$DW$5, DW_AT_external
+      79            ;       C:\ti\ccsv5\tools\compiler\msp430\bin\opt430.exe C:\\Users\\Luiz\\AppData\\Local\\Temp\\026642
+      80 000000               .sect   ".text:lcdTriggerEN"
+      81                    .align  2
+      82                    .clink
+      83                    .global lcdTriggerEN
+      84            
+      85            $C$DW$6 .dwtag  DW_TAG_subprogram, DW_AT_name("lcdTriggerEN")
+      86                    .dwattr $C$DW$6, DW_AT_low_pc(lcdTriggerEN)
+      87                    .dwattr $C$DW$6, DW_AT_high_pc(0x00)
+      88                    .dwattr $C$DW$6, DW_AT_TI_symbol_name("lcdTriggerEN")
+      89                    .dwattr $C$DW$6, DW_AT_external
+      90                    .dwattr $C$DW$6, DW_AT_TI_begin_file("../lcdLib.c")
+      91                    .dwattr $C$DW$6, DW_AT_TI_begin_line(0x07)
+      92                    .dwattr $C$DW$6, DW_AT_TI_begin_column(0x06)
+      93                    .dwattr $C$DW$6, DW_AT_TI_max_frame_size(0x02)
+      94                    .dwpsn  file "../lcdLib.c",line 7,column 21,is_stmt,address lcdTriggerEN
+      95            
+      96                    .dwfde $C$DW$CIE, lcdTriggerEN
+      97            
+      98            ;*****************************************************************************
+      99            ;* FUNCTION NAME: lcdTriggerEN                                               *
+     100            ;*                                                                           *
+     101            ;*   Regs Modified     : SP,SR                                               *
+     102            ;*   Regs Used         : SP,SR                                               *
+     103            ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                   *
+     104            ;*****************************************************************************
+     105            
+     106            ;******************************************************************************
+     107            ;*                                                                            *
+     108            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     109            ;*                                                                            *
+     110            ;******************************************************************************
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    3
+
+     111 000000       lcdTriggerEN:
+     112            ;* --------------------------------------------------------------------------*
+     113                    .dwcfi  cfa_offset, 2
+     114                    .dwcfi  save_reg_to_mem, 16, -2
+     115            ;** 8   -----------------------    P2OUT |= 0x10u;
+     116                    .dwpsn  file "../lcdLib.c",line 8,column 2,is_stmt
+     117 000000 D0F2          OR.B      #16,&P2OUT+0          ; [] |8| 
+         000002 0010 
+         000004 0000!
+     118            ;** 9   -----------------------    P2OUT &= 0xefu;
+     119                    .dwpsn  file "../lcdLib.c",line 9,column 2,is_stmt
+     120 000006 F0F2          AND.B     #239,&P2OUT+0         ; [] |9| 
+         000008 00EF 
+         00000a 0000!
+     121            ;**     -----------------------    return;
+     122                    .dwpsn  file "../lcdLib.c",line 10,column 1,is_stmt
+     123            $C$DW$7 .dwtag  DW_TAG_TI_branch
+     124                    .dwattr $C$DW$7, DW_AT_low_pc(0x00)
+     125                    .dwattr $C$DW$7, DW_AT_TI_return
+     126 00000c 4130          RET       ; [] 
+     127                    ; [] 
+     128                    .dwattr $C$DW$6, DW_AT_TI_end_file("../lcdLib.c")
+     129                    .dwattr $C$DW$6, DW_AT_TI_end_line(0x0a)
+     130                    .dwattr $C$DW$6, DW_AT_TI_end_column(0x01)
+     131                    .dwendentry
+     132                    .dwendtag $C$DW$6
+     133            
+     134 000000               .sect   ".text:lcdWriteData"
+     135                    .align  2
+     136                    .clink
+     137                    .global lcdWriteData
+     138            
+     139            $C$DW$8 .dwtag  DW_TAG_subprogram, DW_AT_name("lcdWriteData")
+     140                    .dwattr $C$DW$8, DW_AT_low_pc(lcdWriteData)
+     141                    .dwattr $C$DW$8, DW_AT_high_pc(0x00)
+     142                    .dwattr $C$DW$8, DW_AT_TI_symbol_name("lcdWriteData")
+     143                    .dwattr $C$DW$8, DW_AT_external
+     144                    .dwattr $C$DW$8, DW_AT_TI_begin_file("../lcdLib.c")
+     145                    .dwattr $C$DW$8, DW_AT_TI_begin_line(0x0c)
+     146                    .dwattr $C$DW$8, DW_AT_TI_begin_column(0x06)
+     147                    .dwattr $C$DW$8, DW_AT_TI_max_frame_size(0x02)
+     148                    .dwpsn  file "../lcdLib.c",line 12,column 39,is_stmt,address lcdWriteData
+     149            
+     150                    .dwfde $C$DW$CIE, lcdWriteData
+     151            $C$DW$9 .dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
+     152                    .dwattr $C$DW$9, DW_AT_TI_symbol_name("data")
+     153                    .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$6)
+     154                    .dwattr $C$DW$9, DW_AT_location[DW_OP_reg12]
+     155            
+     156            ;*****************************************************************************
+     157            ;* FUNCTION NAME: lcdWriteData                                               *
+     158            ;*                                                                           *
+     159            ;*   Regs Modified     : SP,SR,r12,r14,r15                                   *
+     160            ;*   Regs Used         : SP,SR,r12,r14,r15                                   *
+     161            ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                   *
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    4
+
+     162            ;*****************************************************************************
+     163            
+     164            ;******************************************************************************
+     165            ;*                                                                            *
+     166            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     167            ;*                                                                            *
+     168            ;******************************************************************************
+     169 000000       lcdWriteData:
+     170            ;* --------------------------------------------------------------------------*
+     171                    .dwcfi  cfa_offset, 2
+     172                    .dwcfi  save_reg_to_mem, 16, -2
+     173            ;* r15   assigned to data
+     174            $C$DW$10        .dwtag  DW_TAG_variable, DW_AT_name("data")
+     175                    .dwattr $C$DW$10, DW_AT_TI_symbol_name("data")
+     176                    .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$6)
+     177                    .dwattr $C$DW$10, DW_AT_location[DW_OP_reg15]
+     178 000000 4C0F          MOV.W     r12,r15               ; [] |12| 
+     179            ;** 13  -----------------------    P2OUT = P2OUT|0x20;
+     180                    .dwpsn  file "../lcdLib.c",line 13,column 2,is_stmt
+     181 000002 D0F2          OR.B      #32,&P2OUT+0          ; [] |13| 
+         000004 0020 
+         000006 0000!
+     182            ;** 14  -----------------------    P2OUT = (P2OUT&0xfff0)+((int)data>>4);
+     183                    .dwpsn  file "../lcdLib.c",line 14,column 2,is_stmt
+     184 000008 4F4C          MOV.B     r15,r12               ; [] |14| 
+     185            $C$DW$11        .dwtag  DW_TAG_TI_branch
+     186                    .dwattr $C$DW$11, DW_AT_low_pc(0x00)
+     187                    .dwattr $C$DW$11, DW_AT_name("I_ASR_4")
+     188                    .dwattr $C$DW$11, DW_AT_TI_call
+     189 00000a 12B0          CALL      #I_ASR_4              ; [] |14| 
+         00000c 0000!
+     190                                                      ; [] |14| 
+     191 00000e 403E          MOV.W     #240,r14              ; [] |14| 
+         000010 00F0 
+     192 000012 F25E          AND.B     &P2OUT+0,r14          ; [] |14| 
+         000014 0000!
+     193 000016 5E4C          ADD.B     r14,r12               ; [] |14| 
+     194 000018 4CC2          MOV.B     r12,&P2OUT+0          ; [] |14| 
+         00001a 0000!
+     195            ;** 15  -----------------------    lcdTriggerEN();
+     196                    .dwpsn  file "../lcdLib.c",line 15,column 2,is_stmt
+     197            $C$DW$12        .dwtag  DW_TAG_TI_branch
+     198                    .dwattr $C$DW$12, DW_AT_low_pc(0x00)
+     199                    .dwattr $C$DW$12, DW_AT_name("lcdTriggerEN")
+     200                    .dwattr $C$DW$12, DW_AT_TI_call
+     201 00001c 12B0          CALL      #lcdTriggerEN         ; [] |15| 
+         00001e 0000!
+     202                                                      ; [] |15| 
+     203            ;** 16  -----------------------    P2OUT = (P2OUT&0xfff0)+(data&0xf);
+     204                    .dwpsn  file "../lcdLib.c",line 16,column 2,is_stmt
+     205 000020 403E          MOV.W     #240,r14              ; [] |16| 
+         000022 00F0 
+     206 000024 F25E          AND.B     &P2OUT+0,r14          ; [] |16| 
+         000026 0000!
+     207 000028 F07F          AND.B     #15,r15               ; [] |16| 
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    5
+
+         00002a 000F 
+     208 00002c 5E4F          ADD.B     r14,r15               ; [] |16| 
+     209 00002e 4FC2          MOV.B     r15,&P2OUT+0          ; [] |16| 
+         000030 0000!
+     210            ;** 17  -----------------------    lcdTriggerEN();
+     211                    .dwpsn  file "../lcdLib.c",line 17,column 2,is_stmt
+     212            $C$DW$13        .dwtag  DW_TAG_TI_branch
+     213                    .dwattr $C$DW$13, DW_AT_low_pc(0x00)
+     214                    .dwattr $C$DW$13, DW_AT_name("lcdTriggerEN")
+     215                    .dwattr $C$DW$13, DW_AT_TI_call
+     216 000032 12B0          CALL      #lcdTriggerEN         ; [] |17| 
+         000034 0000!
+     217                                                      ; [] |17| 
+     218            ;** 18  -----------------------    __delay_cycles(50uL);
+     219                    .dwpsn  file "../lcdLib.c",line 18,column 2,is_stmt
+     220                    ; Begin 50 cycle delay
+     221                    .newblock
+     222 000036 120D          PUSH     r13
+     223 000038 403D          MOV.W    #14, r13
+         00003a 000E 
+     224 00003c 831D  $1:     SUB.W    #1, r13
+     225 00003e 23FE          JNE      $1
+     226 000040 413D          POP      r13
+     227 000042 4303          NOP
+     228                    ; End 50 cycle delay ; [] |18| 
+     229            ;**     -----------------------    return;
+     230                    .dwpsn  file "../lcdLib.c",line 19,column 1,is_stmt
+     231            $C$DW$14        .dwtag  DW_TAG_TI_branch
+     232                    .dwattr $C$DW$14, DW_AT_low_pc(0x00)
+     233                    .dwattr $C$DW$14, DW_AT_TI_return
+     234 000044 4130          RET       ; [] 
+     235                    ; [] 
+     236                    .dwattr $C$DW$8, DW_AT_TI_end_file("../lcdLib.c")
+     237                    .dwattr $C$DW$8, DW_AT_TI_end_line(0x13)
+     238                    .dwattr $C$DW$8, DW_AT_TI_end_column(0x01)
+     239                    .dwendentry
+     240                    .dwendtag $C$DW$8
+     241            
+     242 000000               .sect   ".text:lcdWriteCmd"
+     243                    .align  2
+     244                    .clink
+     245                    .global lcdWriteCmd
+     246            
+     247            $C$DW$15        .dwtag  DW_TAG_subprogram, DW_AT_name("lcdWriteCmd")
+     248                    .dwattr $C$DW$15, DW_AT_low_pc(lcdWriteCmd)
+     249                    .dwattr $C$DW$15, DW_AT_high_pc(0x00)
+     250                    .dwattr $C$DW$15, DW_AT_TI_symbol_name("lcdWriteCmd")
+     251                    .dwattr $C$DW$15, DW_AT_external
+     252                    .dwattr $C$DW$15, DW_AT_TI_begin_file("../lcdLib.c")
+     253                    .dwattr $C$DW$15, DW_AT_TI_begin_line(0x15)
+     254                    .dwattr $C$DW$15, DW_AT_TI_begin_column(0x06)
+     255                    .dwattr $C$DW$15, DW_AT_TI_max_frame_size(0x02)
+     256                    .dwpsn  file "../lcdLib.c",line 21,column 37,is_stmt,address lcdWriteCmd
+     257            
+     258                    .dwfde $C$DW$CIE, lcdWriteCmd
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    6
+
+     259            $C$DW$16        .dwtag  DW_TAG_formal_parameter, DW_AT_name("cmd")
+     260                    .dwattr $C$DW$16, DW_AT_TI_symbol_name("cmd")
+     261                    .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$6)
+     262                    .dwattr $C$DW$16, DW_AT_location[DW_OP_reg12]
+     263            
+     264            ;*****************************************************************************
+     265            ;* FUNCTION NAME: lcdWriteCmd                                                *
+     266            ;*                                                                           *
+     267            ;*   Regs Modified     : SP,SR,r12,r14,r15                                   *
+     268            ;*   Regs Used         : SP,SR,r12,r14,r15                                   *
+     269            ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                   *
+     270            ;*****************************************************************************
+     271            
+     272            ;******************************************************************************
+     273            ;*                                                                            *
+     274            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     275            ;*                                                                            *
+     276            ;******************************************************************************
+     277 000000       lcdWriteCmd:
+     278            ;* --------------------------------------------------------------------------*
+     279                    .dwcfi  cfa_offset, 2
+     280                    .dwcfi  save_reg_to_mem, 16, -2
+     281            ;* r15   assigned to cmd
+     282            $C$DW$17        .dwtag  DW_TAG_variable, DW_AT_name("cmd")
+     283                    .dwattr $C$DW$17, DW_AT_TI_symbol_name("cmd")
+     284                    .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$6)
+     285                    .dwattr $C$DW$17, DW_AT_location[DW_OP_reg15]
+     286 000000 4C0F          MOV.W     r12,r15               ; [] |21| 
+     287            ;** 22  -----------------------    P2OUT = P2OUT&0xffdf;
+     288                    .dwpsn  file "../lcdLib.c",line 22,column 2,is_stmt
+     289 000002 F0F2          AND.B     #223,&P2OUT+0         ; [] |22| 
+         000004 00DF 
+         000006 0000!
+     290            ;** 23  -----------------------    P2OUT = (P2OUT&0xfff0)+((int)cmd>>4);
+     291                    .dwpsn  file "../lcdLib.c",line 23,column 2,is_stmt
+     292 000008 4F4C          MOV.B     r15,r12               ; [] |23| 
+     293            $C$DW$18        .dwtag  DW_TAG_TI_branch
+     294                    .dwattr $C$DW$18, DW_AT_low_pc(0x00)
+     295                    .dwattr $C$DW$18, DW_AT_name("I_ASR_4")
+     296                    .dwattr $C$DW$18, DW_AT_TI_call
+     297 00000a 12B0          CALL      #I_ASR_4              ; [] |23| 
+         00000c 0000!
+     298                                                      ; [] |23| 
+     299 00000e 403E          MOV.W     #240,r14              ; [] |23| 
+         000010 00F0 
+     300 000012 F25E          AND.B     &P2OUT+0,r14          ; [] |23| 
+         000014 0000!
+     301 000016 5E4C          ADD.B     r14,r12               ; [] |23| 
+     302 000018 4CC2          MOV.B     r12,&P2OUT+0          ; [] |23| 
+         00001a 0000!
+     303            ;** 24  -----------------------    lcdTriggerEN();
+     304                    .dwpsn  file "../lcdLib.c",line 24,column 2,is_stmt
+     305            $C$DW$19        .dwtag  DW_TAG_TI_branch
+     306                    .dwattr $C$DW$19, DW_AT_low_pc(0x00)
+     307                    .dwattr $C$DW$19, DW_AT_name("lcdTriggerEN")
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    7
+
+     308                    .dwattr $C$DW$19, DW_AT_TI_call
+     309 00001c 12B0          CALL      #lcdTriggerEN         ; [] |24| 
+         00001e 0000!
+     310                                                      ; [] |24| 
+     311            ;** 25  -----------------------    P2OUT = (P2OUT&0xfff0)+(cmd&0xf);
+     312                    .dwpsn  file "../lcdLib.c",line 25,column 2,is_stmt
+     313 000020 403E          MOV.W     #240,r14              ; [] |25| 
+         000022 00F0 
+     314 000024 F25E          AND.B     &P2OUT+0,r14          ; [] |25| 
+         000026 0000!
+     315 000028 F07F          AND.B     #15,r15               ; [] |25| 
+         00002a 000F 
+     316 00002c 5E4F          ADD.B     r14,r15               ; [] |25| 
+     317 00002e 4FC2          MOV.B     r15,&P2OUT+0          ; [] |25| 
+         000030 0000!
+     318            ;** 26  -----------------------    lcdTriggerEN();
+     319                    .dwpsn  file "../lcdLib.c",line 26,column 2,is_stmt
+     320            $C$DW$20        .dwtag  DW_TAG_TI_branch
+     321                    .dwattr $C$DW$20, DW_AT_low_pc(0x00)
+     322                    .dwattr $C$DW$20, DW_AT_name("lcdTriggerEN")
+     323                    .dwattr $C$DW$20, DW_AT_TI_call
+     324 000032 12B0          CALL      #lcdTriggerEN         ; [] |26| 
+         000034 0000!
+     325                                                      ; [] |26| 
+     326            ;** 27  -----------------------    __delay_cycles(5000uL);
+     327                    .dwpsn  file "../lcdLib.c",line 27,column 2,is_stmt
+     328                    ; Begin 5000 cycle delay
+     329                    .newblock
+     330 000036 120D          PUSH     r13
+     331 000038 403D          MOV.W    #1664, r13
+         00003a 0680 
+     332 00003c 831D  $1:     SUB.W    #1, r13
+     333 00003e 23FE          JNE      $1
+     334 000040 413D          POP      r13
+     335 000042 4303          NOP
+     336                    ; End 5000 cycle delay ; [] |27| 
+     337            ;**     -----------------------    return;
+     338                    .dwpsn  file "../lcdLib.c",line 28,column 1,is_stmt
+     339            $C$DW$21        .dwtag  DW_TAG_TI_branch
+     340                    .dwattr $C$DW$21, DW_AT_low_pc(0x00)
+     341                    .dwattr $C$DW$21, DW_AT_TI_return
+     342 000044 4130          RET       ; [] 
+     343                    ; [] 
+     344                    .dwattr $C$DW$15, DW_AT_TI_end_file("../lcdLib.c")
+     345                    .dwattr $C$DW$15, DW_AT_TI_end_line(0x1c)
+     346                    .dwattr $C$DW$15, DW_AT_TI_end_column(0x01)
+     347                    .dwendentry
+     348                    .dwendtag $C$DW$15
+     349            
+     350 000000               .sect   ".text:lcdGo"
+     351                    .align  2
+     352                    .clink
+     353                    .global lcdGo
+     354            
+     355            $C$DW$22        .dwtag  DW_TAG_subprogram, DW_AT_name("lcdGo")
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    8
+
+     356                    .dwattr $C$DW$22, DW_AT_low_pc(lcdGo)
+     357                    .dwattr $C$DW$22, DW_AT_high_pc(0x00)
+     358                    .dwattr $C$DW$22, DW_AT_TI_symbol_name("lcdGo")
+     359                    .dwattr $C$DW$22, DW_AT_external
+     360                    .dwattr $C$DW$22, DW_AT_TI_begin_file("../lcdLib.c")
+     361                    .dwattr $C$DW$22, DW_AT_TI_begin_line(0x1e)
+     362                    .dwattr $C$DW$22, DW_AT_TI_begin_column(0x06)
+     363                    .dwattr $C$DW$22, DW_AT_TI_max_frame_size(0x02)
+     364                    .dwpsn  file "../lcdLib.c",line 30,column 46,is_stmt,address lcdGo
+     365            
+     366                    .dwfde $C$DW$CIE, lcdGo
+     367            $C$DW$23        .dwtag  DW_TAG_formal_parameter, DW_AT_name("x")
+     368                    .dwattr $C$DW$23, DW_AT_TI_symbol_name("x")
+     369                    .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$6)
+     370                    .dwattr $C$DW$23, DW_AT_location[DW_OP_reg12]
+     371            $C$DW$24        .dwtag  DW_TAG_formal_parameter, DW_AT_name("y")
+     372                    .dwattr $C$DW$24, DW_AT_TI_symbol_name("y")
+     373                    .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$6)
+     374                    .dwattr $C$DW$24, DW_AT_location[DW_OP_reg13]
+     375            
+     376            ;*****************************************************************************
+     377            ;* FUNCTION NAME: lcdGo                                                      *
+     378            ;*                                                                           *
+     379            ;*   Regs Modified     : SP,SR,r12,r14,r15                                   *
+     380            ;*   Regs Used         : SP,SR,r12,r13,r14,r15                               *
+     381            ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                   *
+     382            ;*****************************************************************************
+     383            
+     384            ;******************************************************************************
+     385            ;*                                                                            *
+     386            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     387            ;*                                                                            *
+     388            ;******************************************************************************
+     389 000000       lcdGo:
+     390            ;* --------------------------------------------------------------------------*
+     391                    .dwcfi  cfa_offset, 2
+     392                    .dwcfi  save_reg_to_mem, 16, -2
+     393            ;* r12   assigned to x
+     394            $C$DW$25        .dwtag  DW_TAG_variable, DW_AT_name("x")
+     395                    .dwattr $C$DW$25, DW_AT_TI_symbol_name("x")
+     396                    .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$6)
+     397                    .dwattr $C$DW$25, DW_AT_location[DW_OP_reg12]
+     398            ;* r13   assigned to y
+     399            $C$DW$26        .dwtag  DW_TAG_variable, DW_AT_name("y")
+     400                    .dwattr $C$DW$26, DW_AT_TI_symbol_name("y")
+     401                    .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$6)
+     402                    .dwattr $C$DW$26, DW_AT_location[DW_OP_reg13]
+     403            ;** 31  -----------------------    if ( x >= 16 ) goto g5;
+     404                    .dwpsn  file "../lcdLib.c",line 31,column 2,is_stmt
+     405 000000 907C          CMP.B     #16,r12               ; [] |31| 
+         000002 0010 
+     406 000004 2C08          JHS       $C$L2                 ; [] |31| 
+     407                                                      ; [] |31| 
+     408            ;* --------------------------------------------------------------------------*
+     409            ;** 32  -----------------------    if ( y != 1 ) goto g4;
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE    9
+
+     410                    .dwpsn  file "../lcdLib.c",line 32,column 3,is_stmt
+     411 000006 935D          CMP.B     #1,r13                ; [] |32| 
+     412 000008 2002          JNE       $C$L1                 ; [] |32| 
+     413                                                      ; [] |32| 
+     414            ;* --------------------------------------------------------------------------*
+     415            ;** 32  -----------------------    x |= 0x40u;
+     416                    .dwpsn  file "../lcdLib.c",line 32,column 15,is_stmt
+     417 00000a D07C          OR.B      #64,r12               ; [] |32| 
+         00000c 0040 
+     418            ;* --------------------------------------------------------------------------*
+     419 00000e       $C$L1:    
+     420            ;**     -----------------------g4:
+     421            ;** 34  -----------------------    lcdWriteCmd(x |= 0x80u);
+     422                    .dwpsn  file "../lcdLib.c",line 34,column 3,is_stmt
+     423 00000e D07C          OR.B      #128,r12              ; [] |34| 
+         000010 0080 
+     424            $C$DW$27        .dwtag  DW_TAG_TI_branch
+     425                    .dwattr $C$DW$27, DW_AT_low_pc(0x00)
+     426                    .dwattr $C$DW$27, DW_AT_name("lcdWriteCmd")
+     427                    .dwattr $C$DW$27, DW_AT_TI_call
+     428 000012 12B0          CALL      #lcdWriteCmd          ; [] |34| 
+         000014 0000!
+     429                                                      ; [] |34| 
+     430            ;**     -----------------------g5:
+     431            ;**     -----------------------    return;
+     432            ;* --------------------------------------------------------------------------*
+     433 000016       $C$L2:    
+     434                    .dwpsn  file "../lcdLib.c",line 36,column 1,is_stmt
+     435            $C$DW$28        .dwtag  DW_TAG_TI_branch
+     436                    .dwattr $C$DW$28, DW_AT_low_pc(0x00)
+     437                    .dwattr $C$DW$28, DW_AT_TI_return
+     438 000016 4130          RET       ; [] 
+     439                    ; [] 
+     440                    .dwattr $C$DW$22, DW_AT_TI_end_file("../lcdLib.c")
+     441                    .dwattr $C$DW$22, DW_AT_TI_end_line(0x24)
+     442                    .dwattr $C$DW$22, DW_AT_TI_end_column(0x01)
+     443                    .dwendentry
+     444                    .dwendtag $C$DW$22
+     445            
+     446 000000               .sect   ".text:lcdInit"
+     447                    .align  2
+     448                    .clink
+     449                    .global lcdInit
+     450            
+     451            $C$DW$29        .dwtag  DW_TAG_subprogram, DW_AT_name("lcdInit")
+     452                    .dwattr $C$DW$29, DW_AT_low_pc(lcdInit)
+     453                    .dwattr $C$DW$29, DW_AT_high_pc(0x00)
+     454                    .dwattr $C$DW$29, DW_AT_TI_symbol_name("lcdInit")
+     455                    .dwattr $C$DW$29, DW_AT_external
+     456                    .dwattr $C$DW$29, DW_AT_TI_begin_file("../lcdLib.c")
+     457                    .dwattr $C$DW$29, DW_AT_TI_begin_line(0x26)
+     458                    .dwattr $C$DW$29, DW_AT_TI_begin_column(0x06)
+     459                    .dwattr $C$DW$29, DW_AT_TI_max_frame_size(0x02)
+     460                    .dwpsn  file "../lcdLib.c",line 38,column 16,is_stmt,address lcdInit
+     461            
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   10
+
+     462                    .dwfde $C$DW$CIE, lcdInit
+     463            
+     464            ;*****************************************************************************
+     465            ;* FUNCTION NAME: lcdInit                                                    *
+     466            ;*                                                                           *
+     467            ;*   Regs Modified     : SP,SR,r12,r14,r15                                   *
+     468            ;*   Regs Used         : SP,SR,r12,r14,r15                                   *
+     469            ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                   *
+     470            ;*****************************************************************************
+     471            
+     472            ;******************************************************************************
+     473            ;*                                                                            *
+     474            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     475            ;*                                                                            *
+     476            ;******************************************************************************
+     477 000000       lcdInit:
+     478            ;* --------------------------------------------------------------------------*
+     479                    .dwcfi  cfa_offset, 2
+     480                    .dwcfi  save_reg_to_mem, 16, -2
+     481            ;** 39  -----------------------    __delay_cycles(100000uL);
+     482                    .dwpsn  file "../lcdLib.c",line 39,column 2,is_stmt
+     483                    ; Begin 100000 cycle delay
+     484                    .newblock
+     485 000000 120D          PUSH     r13
+     486 000002 403D          MOV.W    #33331, r13
+         000004 8233 
+     487 000006 831D  $1:     SUB.W    #1, r13
+     488 000008 23FE          JNE      $1
+     489 00000a 413D          POP      r13
+     490                    ; End 100000 cycle delay ; [] |39| 
+     491            ;** 41  -----------------------    P2OUT = 3u;
+     492                    .dwpsn  file "../lcdLib.c",line 41,column 2,is_stmt
+     493 00000c 40F2          MOV.B     #3,&P2OUT+0           ; [] |41| 
+         00000e 0003 
+         000010 0000!
+     494            ;** 42  -----------------------    P2DIR = 0xffu;
+     495                    .dwpsn  file "../lcdLib.c",line 42,column 2,is_stmt
+     496 000012 43F2          MOV.B     #255,&P2DIR+0         ; [] |42| 
+         000014 0000!
+     497            ;** 43  -----------------------    lcdTriggerEN();
+     498                    .dwpsn  file "../lcdLib.c",line 43,column 2,is_stmt
+     499            $C$DW$30        .dwtag  DW_TAG_TI_branch
+     500                    .dwattr $C$DW$30, DW_AT_low_pc(0x00)
+     501                    .dwattr $C$DW$30, DW_AT_name("lcdTriggerEN")
+     502                    .dwattr $C$DW$30, DW_AT_TI_call
+     503 000016 12B0          CALL      #lcdTriggerEN         ; [] |43| 
+         000018 0000!
+     504                                                      ; [] |43| 
+     505            ;** 44  -----------------------    __delay_cycles(5000uL);
+     506                    .dwpsn  file "../lcdLib.c",line 44,column 2,is_stmt
+     507                    ; Begin 5000 cycle delay
+     508                    .newblock
+     509 00001a 120D          PUSH     r13
+     510 00001c 403D          MOV.W    #1664, r13
+         00001e 0680 
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   11
+
+     511 000020 831D  $1:     SUB.W    #1, r13
+     512 000022 23FE          JNE      $1
+     513 000024 413D          POP      r13
+     514 000026 4303          NOP
+     515                    ; End 5000 cycle delay ; [] |44| 
+     516            ;** 45  -----------------------    lcdTriggerEN();
+     517                    .dwpsn  file "../lcdLib.c",line 45,column 2,is_stmt
+     518            $C$DW$31        .dwtag  DW_TAG_TI_branch
+     519                    .dwattr $C$DW$31, DW_AT_low_pc(0x00)
+     520                    .dwattr $C$DW$31, DW_AT_name("lcdTriggerEN")
+     521                    .dwattr $C$DW$31, DW_AT_TI_call
+     522 000028 12B0          CALL      #lcdTriggerEN         ; [] |45| 
+         00002a 0000!
+     523                                                      ; [] |45| 
+     524            ;** 46  -----------------------    __delay_cycles(5000uL);
+     525                    .dwpsn  file "../lcdLib.c",line 46,column 2,is_stmt
+     526                    ; Begin 5000 cycle delay
+     527                    .newblock
+     528 00002c 120D          PUSH     r13
+     529 00002e 403D          MOV.W    #1664, r13
+         000030 0680 
+     530 000032 831D  $1:     SUB.W    #1, r13
+     531 000034 23FE          JNE      $1
+     532 000036 413D          POP      r13
+     533 000038 4303          NOP
+     534                    ; End 5000 cycle delay ; [] |46| 
+     535            ;** 47  -----------------------    lcdTriggerEN();
+     536                    .dwpsn  file "../lcdLib.c",line 47,column 2,is_stmt
+     537            $C$DW$32        .dwtag  DW_TAG_TI_branch
+     538                    .dwattr $C$DW$32, DW_AT_low_pc(0x00)
+     539                    .dwattr $C$DW$32, DW_AT_name("lcdTriggerEN")
+     540                    .dwattr $C$DW$32, DW_AT_TI_call
+     541 00003a 12B0          CALL      #lcdTriggerEN         ; [] |47| 
+         00003c 0000!
+     542                                                      ; [] |47| 
+     543            ;** 48  -----------------------    __delay_cycles(5000uL);
+     544                    .dwpsn  file "../lcdLib.c",line 48,column 2,is_stmt
+     545                    ; Begin 5000 cycle delay
+     546                    .newblock
+     547 00003e 120D          PUSH     r13
+     548 000040 403D          MOV.W    #1664, r13
+         000042 0680 
+     549 000044 831D  $1:     SUB.W    #1, r13
+     550 000046 23FE          JNE      $1
+     551 000048 413D          POP      r13
+     552 00004a 4303          NOP
+     553                    ; End 5000 cycle delay ; [] |48| 
+     554            ;** 50  -----------------------    P2OUT = 2u;
+     555                    .dwpsn  file "../lcdLib.c",line 50,column 2,is_stmt
+     556 00004c 43E2          MOV.B     #2,&P2OUT+0           ; [] |50| 
+         00004e 0000!
+     557            ;** 51  -----------------------    lcdTriggerEN();
+     558                    .dwpsn  file "../lcdLib.c",line 51,column 2,is_stmt
+     559            $C$DW$33        .dwtag  DW_TAG_TI_branch
+     560                    .dwattr $C$DW$33, DW_AT_low_pc(0x00)
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   12
+
+     561                    .dwattr $C$DW$33, DW_AT_name("lcdTriggerEN")
+     562                    .dwattr $C$DW$33, DW_AT_TI_call
+     563 000050 12B0          CALL      #lcdTriggerEN         ; [] |51| 
+         000052 0000!
+     564                                                      ; [] |51| 
+     565            ;** 52  -----------------------    __delay_cycles(5000uL);
+     566                    .dwpsn  file "../lcdLib.c",line 52,column 2,is_stmt
+     567                    ; Begin 5000 cycle delay
+     568                    .newblock
+     569 000054 120D          PUSH     r13
+     570 000056 403D          MOV.W    #1664, r13
+         000058 0680 
+     571 00005a 831D  $1:     SUB.W    #1, r13
+     572 00005c 23FE          JNE      $1
+     573 00005e 413D          POP      r13
+     574 000060 4303          NOP
+     575                    ; End 5000 cycle delay ; [] |52| 
+     576            ;** 54  -----------------------    lcdWriteCmd(40u);
+     577                    .dwpsn  file "../lcdLib.c",line 54,column 2,is_stmt
+     578 000062 407C          MOV.B     #40,r12               ; [] |54| 
+         000064 0028 
+     579            $C$DW$34        .dwtag  DW_TAG_TI_branch
+     580                    .dwattr $C$DW$34, DW_AT_low_pc(0x00)
+     581                    .dwattr $C$DW$34, DW_AT_name("lcdWriteCmd")
+     582                    .dwattr $C$DW$34, DW_AT_TI_call
+     583 000066 12B0          CALL      #lcdWriteCmd          ; [] |54| 
+         000068 0000!
+     584                                                      ; [] |54| 
+     585            ;** 55  -----------------------    lcdWriteCmd(8u);
+     586                    .dwpsn  file "../lcdLib.c",line 55,column 2,is_stmt
+     587 00006a 427C          MOV.B     #8,r12                ; [] |55| 
+     588            $C$DW$35        .dwtag  DW_TAG_TI_branch
+     589                    .dwattr $C$DW$35, DW_AT_low_pc(0x00)
+     590                    .dwattr $C$DW$35, DW_AT_name("lcdWriteCmd")
+     591                    .dwattr $C$DW$35, DW_AT_TI_call
+     592 00006c 12B0          CALL      #lcdWriteCmd          ; [] |55| 
+         00006e 0000!
+     593                                                      ; [] |55| 
+     594            ;** 56  -----------------------    lcdWriteCmd(1u);
+     595                    .dwpsn  file "../lcdLib.c",line 56,column 2,is_stmt
+     596 000070 435C          MOV.B     #1,r12                ; [] |56| 
+     597            $C$DW$36        .dwtag  DW_TAG_TI_branch
+     598                    .dwattr $C$DW$36, DW_AT_low_pc(0x00)
+     599                    .dwattr $C$DW$36, DW_AT_name("lcdWriteCmd")
+     600                    .dwattr $C$DW$36, DW_AT_TI_call
+     601 000072 12B0          CALL      #lcdWriteCmd          ; [] |56| 
+         000074 0000!
+     602                                                      ; [] |56| 
+     603            ;** 57  -----------------------    lcdWriteCmd(6u);
+     604                    .dwpsn  file "../lcdLib.c",line 57,column 2,is_stmt
+     605 000076 407C          MOV.B     #6,r12                ; [] |57| 
+         000078 0006 
+     606            $C$DW$37        .dwtag  DW_TAG_TI_branch
+     607                    .dwattr $C$DW$37, DW_AT_low_pc(0x00)
+     608                    .dwattr $C$DW$37, DW_AT_name("lcdWriteCmd")
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   13
+
+     609                    .dwattr $C$DW$37, DW_AT_TI_call
+     610 00007a 12B0          CALL      #lcdWriteCmd          ; [] |57| 
+         00007c 0000!
+     611                                                      ; [] |57| 
+     612            ;** 58  -----------------------    lcdWriteCmd(12u);
+     613                    .dwpsn  file "../lcdLib.c",line 58,column 2,is_stmt
+     614 00007e 407C          MOV.B     #12,r12               ; [] |58| 
+         000080 000C 
+     615            $C$DW$38        .dwtag  DW_TAG_TI_branch
+     616                    .dwattr $C$DW$38, DW_AT_low_pc(0x00)
+     617                    .dwattr $C$DW$38, DW_AT_name("lcdWriteCmd")
+     618                    .dwattr $C$DW$38, DW_AT_TI_call
+     619 000082 12B0          CALL      #lcdWriteCmd          ; [] |58| 
+         000084 0000!
+     620                                                      ; [] |58| 
+     621            ;**     -----------------------    return;
+     622                    .dwpsn  file "../lcdLib.c",line 59,column 1,is_stmt
+     623            $C$DW$39        .dwtag  DW_TAG_TI_branch
+     624                    .dwattr $C$DW$39, DW_AT_low_pc(0x00)
+     625                    .dwattr $C$DW$39, DW_AT_TI_return
+     626 000086 4130          RET       ; [] 
+     627                    ; [] 
+     628                    .dwattr $C$DW$29, DW_AT_TI_end_file("../lcdLib.c")
+     629                    .dwattr $C$DW$29, DW_AT_TI_end_line(0x3b)
+     630                    .dwattr $C$DW$29, DW_AT_TI_end_column(0x01)
+     631                    .dwendentry
+     632                    .dwendtag $C$DW$29
+     633            
+     634 000000               .sect   ".text:lcdSetText"
+     635                    .align  2
+     636                    .clink
+     637                    .global lcdSetText
+     638            
+     639            $C$DW$40        .dwtag  DW_TAG_subprogram, DW_AT_name("lcdSetText")
+     640                    .dwattr $C$DW$40, DW_AT_low_pc(lcdSetText)
+     641                    .dwattr $C$DW$40, DW_AT_high_pc(0x00)
+     642                    .dwattr $C$DW$40, DW_AT_TI_symbol_name("lcdSetText")
+     643                    .dwattr $C$DW$40, DW_AT_external
+     644                    .dwattr $C$DW$40, DW_AT_TI_begin_file("../lcdLib.c")
+     645                    .dwattr $C$DW$40, DW_AT_TI_begin_line(0x3d)
+     646                    .dwattr $C$DW$40, DW_AT_TI_begin_column(0x06)
+     647                    .dwattr $C$DW$40, DW_AT_TI_max_frame_size(0x02)
+     648                    .dwpsn  file "../lcdLib.c",line 61,column 44,is_stmt,address lcdSetText
+     649            
+     650                    .dwfde $C$DW$CIE, lcdSetText
+     651            $C$DW$41        .dwtag  DW_TAG_formal_parameter, DW_AT_name("text")
+     652                    .dwattr $C$DW$41, DW_AT_TI_symbol_name("text")
+     653                    .dwattr $C$DW$41, DW_AT_type(*$C$DW$T$26)
+     654                    .dwattr $C$DW$41, DW_AT_location[DW_OP_reg12]
+     655            $C$DW$42        .dwtag  DW_TAG_formal_parameter, DW_AT_name("x")
+     656                    .dwattr $C$DW$42, DW_AT_TI_symbol_name("x")
+     657                    .dwattr $C$DW$42, DW_AT_type(*$C$DW$T$10)
+     658                    .dwattr $C$DW$42, DW_AT_location[DW_OP_reg13]
+     659            $C$DW$43        .dwtag  DW_TAG_formal_parameter, DW_AT_name("y")
+     660                    .dwattr $C$DW$43, DW_AT_TI_symbol_name("y")
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   14
+
+     661                    .dwattr $C$DW$43, DW_AT_type(*$C$DW$T$10)
+     662                    .dwattr $C$DW$43, DW_AT_location[DW_OP_reg14]
+     663            
+     664            ;*****************************************************************************
+     665            ;* FUNCTION NAME: lcdSetText                                                 *
+     666            ;*                                                                           *
+     667            ;*   Regs Modified     : SP,SR,r11,r12,r13,r14,r15                           *
+     668            ;*   Regs Used         : SP,SR,r11,r12,r13,r14,r15                           *
+     669            ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                   *
+     670            ;*****************************************************************************
+     671            
+     672            ;******************************************************************************
+     673            ;*                                                                            *
+     674            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     675            ;*                                                                            *
+     676            ;******************************************************************************
+     677 000000       lcdSetText:
+     678            ;* --------------------------------------------------------------------------*
+     679                    .dwcfi  cfa_offset, 2
+     680                    .dwcfi  save_reg_to_mem, 16, -2
+     681            ;* r15   assigned to text
+     682            $C$DW$44        .dwtag  DW_TAG_variable, DW_AT_name("text")
+     683                    .dwattr $C$DW$44, DW_AT_TI_symbol_name("text")
+     684                    .dwattr $C$DW$44, DW_AT_type(*$C$DW$T$26)
+     685                    .dwattr $C$DW$44, DW_AT_location[DW_OP_reg15]
+     686            ;* r13   assigned to x
+     687            $C$DW$45        .dwtag  DW_TAG_variable, DW_AT_name("x")
+     688                    .dwattr $C$DW$45, DW_AT_TI_symbol_name("x")
+     689                    .dwattr $C$DW$45, DW_AT_type(*$C$DW$T$10)
+     690                    .dwattr $C$DW$45, DW_AT_location[DW_OP_reg13]
+     691            ;* r12   assigned to y
+     692            $C$DW$46        .dwtag  DW_TAG_variable, DW_AT_name("y")
+     693                    .dwattr $C$DW$46, DW_AT_TI_symbol_name("y")
+     694                    .dwattr $C$DW$46, DW_AT_type(*$C$DW$T$10)
+     695                    .dwattr $C$DW$46, DW_AT_location[DW_OP_reg12]
+     696            ;* r14   assigned to i
+     697            $C$DW$47        .dwtag  DW_TAG_variable, DW_AT_name("i")
+     698                    .dwattr $C$DW$47, DW_AT_TI_symbol_name("i")
+     699                    .dwattr $C$DW$47, DW_AT_type(*$C$DW$T$10)
+     700                    .dwattr $C$DW$47, DW_AT_location[DW_OP_reg14]
+     701            ;* r12   assigned to o
+     702            $C$DW$48        .dwtag  DW_TAG_variable, DW_AT_name("o")
+     703                    .dwattr $C$DW$48, DW_AT_TI_symbol_name("o")
+     704                    .dwattr $C$DW$48, DW_AT_type(*$C$DW$T$10)
+     705                    .dwattr $C$DW$48, DW_AT_location[DW_OP_reg12]
+     706 000000 4C0F          MOV.W     r12,r15               ; [] |61| 
+     707 000002 4E0C          MOV.W     r14,r12               ; [] |61| 
+     708            ;** 63  -----------------------    i = 0;
+     709                    .dwpsn  file "../lcdLib.c",line 63,column 2,is_stmt
+     710 000004 430E          MOV.W     #0,r14                ; [] |63| 
+     711            ;** 64  -----------------------    o = (y<<4)+x;
+     712                    .dwpsn  file "../lcdLib.c",line 64,column 2,is_stmt
+     713            $C$DW$49        .dwtag  DW_TAG_TI_branch
+     714                    .dwattr $C$DW$49, DW_AT_low_pc(0x00)
+     715                    .dwattr $C$DW$49, DW_AT_name("I_LSL_4")
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   15
+
+     716                    .dwattr $C$DW$49, DW_AT_TI_call
+     717 000006 12B0          CALL      #I_LSL_4              ; [] |64| 
+         000008 0000!
+     718                                                      ; [] |64| 
+     719 00000a 5D0C          ADD.W     r13,r12               ; [] |64| 
+     720            ;** 65  -----------------------    goto g3;
+     721                    .dwpsn  file "../lcdLib.c",line 65,column 2,is_stmt
+     722 00000c 3C06          JMP       $C$L4                 ; [] |65| 
+     723                                                      ; [] |65| 
+     724            ;* --------------------------------------------------------------------------*
+     725 00000e       $C$L3:    
+     726 00000e       $C$DW$L$lcdSetText$2$B:
+     727            ;**     -----------------------g2:
+     728            ;** 66  -----------------------    lcdBuffer[o] = text[i];
+     729                    .dwpsn  file "../lcdLib.c",line 66,column 3,is_stmt
+     730 00000e 4F0D          MOV.W     r15,r13               ; [] |66| 
+     731 000010 5E0D          ADD.W     r14,r13               ; [] |66| 
+     732 000012 4DEC          MOV.B     @r13,lcdBuffer+0(r12) ; [] |66| 
+         000014 0000!
+     733            ;** 67  -----------------------    ++i;
+     734                    .dwpsn  file "../lcdLib.c",line 67,column 3,is_stmt
+     735 000016 531E          ADD.W     #1,r14                ; [] |67| 
+     736            ;** 68  -----------------------    ++o;
+     737                    .dwpsn  file "../lcdLib.c",line 68,column 3,is_stmt
+     738 000018 531C          ADD.W     #1,r12                ; [] |68| 
+     739 00001a       $C$DW$L$lcdSetText$2$E:
+     740            ;* --------------------------------------------------------------------------*
+     741            ;*   BEGIN LOOP $C$L4
+     742            ;* --------------------------------------------------------------------------*
+     743 00001a       $C$L4:    
+     744 00001a       $C$DW$L$lcdSetText$3$B:
+     745            ;**     -----------------------g3:
+     746            ;** 65  -----------------------    if ( text[i] ) goto g2;
+     747                    .dwpsn  file "../lcdLib.c",line 65,column 9,is_stmt
+     748 00001a 4F0D          MOV.W     r15,r13               ; [] |65| 
+     749 00001c 5E0D          ADD.W     r14,r13               ; [] |65| 
+     750 00001e 93CD          TST.B     0(r13)                ; [] |65| 
+         000020 0000 
+     751 000022 23F5          JNE       $C$L3                 ; [] |65| 
+     752                                                      ; [] |65| 
+     753 000024       $C$DW$L$lcdSetText$3$E:
+     754            ;* --------------------------------------------------------------------------*
+     755            ;** 70  -----------------------    lcdUpdate();
+     756                    .dwpsn  file "../lcdLib.c",line 70,column 2,is_stmt
+     757            $C$DW$50        .dwtag  DW_TAG_TI_branch
+     758                    .dwattr $C$DW$50, DW_AT_low_pc(0x00)
+     759                    .dwattr $C$DW$50, DW_AT_name("lcdUpdate")
+     760                    .dwattr $C$DW$50, DW_AT_TI_call
+     761 000024 12B0          CALL      #lcdUpdate            ; [] |70| 
+         000026 0000!
+     762                                                      ; [] |70| 
+     763            ;**     -----------------------    return;
+     764                    .dwpsn  file "../lcdLib.c",line 71,column 1,is_stmt
+     765            $C$DW$51        .dwtag  DW_TAG_TI_branch
+     766                    .dwattr $C$DW$51, DW_AT_low_pc(0x00)
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   16
+
+     767                    .dwattr $C$DW$51, DW_AT_TI_return
+     768 000028 4130          RET       ; [] 
+     769                    ; [] 
+     770            
+     771            $C$DW$52        .dwtag  DW_TAG_TI_loop
+     772                    .dwattr $C$DW$52, DW_AT_name("C:\Users\Luiz\Google Drive\School_Work\2013 Spring\EE 3376 - Mic
+     773                    .dwattr $C$DW$52, DW_AT_TI_begin_file("../lcdLib.c")
+     774                    .dwattr $C$DW$52, DW_AT_TI_begin_line(0x41)
+     775                    .dwattr $C$DW$52, DW_AT_TI_end_line(0x44)
+     776            $C$DW$53        .dwtag  DW_TAG_TI_loop_range
+     777                    .dwattr $C$DW$53, DW_AT_low_pc($C$DW$L$lcdSetText$3$B)
+     778                    .dwattr $C$DW$53, DW_AT_high_pc($C$DW$L$lcdSetText$3$E)
+     779            $C$DW$54        .dwtag  DW_TAG_TI_loop_range
+     780                    .dwattr $C$DW$54, DW_AT_low_pc($C$DW$L$lcdSetText$2$B)
+     781                    .dwattr $C$DW$54, DW_AT_high_pc($C$DW$L$lcdSetText$2$E)
+     782                    .dwendtag $C$DW$52
+     783            
+     784                    .dwattr $C$DW$40, DW_AT_TI_end_file("../lcdLib.c")
+     785                    .dwattr $C$DW$40, DW_AT_TI_end_line(0x47)
+     786                    .dwattr $C$DW$40, DW_AT_TI_end_column(0x01)
+     787                    .dwendentry
+     788                    .dwendtag $C$DW$40
+     789            
+     790 000000               .sect   ".text:lcdUpdate"
+     791                    .align  2
+     792                    .clink
+     793                    .global lcdUpdate
+     794            
+     795            $C$DW$55        .dwtag  DW_TAG_subprogram, DW_AT_name("lcdUpdate")
+     796                    .dwattr $C$DW$55, DW_AT_low_pc(lcdUpdate)
+     797                    .dwattr $C$DW$55, DW_AT_high_pc(0x00)
+     798                    .dwattr $C$DW$55, DW_AT_TI_symbol_name("lcdUpdate")
+     799                    .dwattr $C$DW$55, DW_AT_external
+     800                    .dwattr $C$DW$55, DW_AT_TI_begin_file("../lcdLib.c")
+     801                    .dwattr $C$DW$55, DW_AT_TI_begin_line(0x49)
+     802                    .dwattr $C$DW$55, DW_AT_TI_begin_column(0x06)
+     803                    .dwattr $C$DW$55, DW_AT_TI_max_frame_size(0x02)
+     804                    .dwpsn  file "../lcdLib.c",line 73,column 18,is_stmt,address lcdUpdate
+     805            
+     806                    .dwfde $C$DW$CIE, lcdUpdate
+     807            
+     808            ;*****************************************************************************
+     809            ;* FUNCTION NAME: lcdUpdate                                                  *
+     810            ;*                                                                           *
+     811            ;*   Regs Modified     : SP,SR,r12,r13,r14,r15                               *
+     812            ;*   Regs Used         : SP,SR,r12,r13,r14,r15                               *
+     813            ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                   *
+     814            ;*****************************************************************************
+     815            
+     816            ;******************************************************************************
+     817            ;*                                                                            *
+     818            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     819            ;*                                                                            *
+     820            ;******************************************************************************
+     821 000000       lcdUpdate:
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   17
+
+     822            ;* --------------------------------------------------------------------------*
+     823                    .dwcfi  cfa_offset, 2
+     824                    .dwcfi  save_reg_to_mem, 16, -2
+     825            ;* r13   assigned to i
+     826            $C$DW$56        .dwtag  DW_TAG_variable, DW_AT_name("i")
+     827                    .dwattr $C$DW$56, DW_AT_TI_symbol_name("i")
+     828                    .dwattr $C$DW$56, DW_AT_type(*$C$DW$T$10)
+     829                    .dwattr $C$DW$56, DW_AT_location[DW_OP_reg13]
+     830            ;** 75  -----------------------    lcdWriteCmd(0x80u);
+     831                    .dwpsn  file "../lcdLib.c",line 75,column 2,is_stmt
+     832 000000 407C          MOV.B     #128,r12              ; [] |75| 
+         000002 0080 
+     833            $C$DW$57        .dwtag  DW_TAG_TI_branch
+     834                    .dwattr $C$DW$57, DW_AT_low_pc(0x00)
+     835                    .dwattr $C$DW$57, DW_AT_name("lcdWriteCmd")
+     836                    .dwattr $C$DW$57, DW_AT_TI_call
+     837 000004 12B0          CALL      #lcdWriteCmd          ; [] |75| 
+         000006 0000!
+     838                                                      ; [] |75| 
+     839            ;** 76  -----------------------    if ( (i = 0) >= 16 ) goto g3;
+     840                    .dwpsn  file "../lcdLib.c",line 76,column 14,is_stmt
+     841 000008 430D          MOV.W     #0,r13                ; [] |76| 
+     842 00000a 903D          CMP.W     #16,r13               ; [] |76| 
+         00000c 0010 
+     843 00000e 3408          JGE       $C$L6                 ; [] |76| 
+     844                                                      ; [] |76| 
+     845            ;* --------------------------------------------------------------------------*
+     846            ;*   BEGIN LOOP $C$L5
+     847            ;*
+     848            ;*   Loop source line                : 76
+     849            ;*   Loop closing brace source line  : 78
+     850            ;*   Known Minimum Trip Count        : 1
+     851            ;*   Known Maximum Trip Count        : 4294967295
+     852            ;*   Known Max Trip Count Factor     : 1
+     853            ;* --------------------------------------------------------------------------*
+     854 000010       $C$L5:    
+     855 000010       $C$DW$L$lcdUpdate$2$B:
+     856            ;**     -----------------------g2:
+     857            ;** 77  -----------------------    lcdWriteData(lcdBuffer[i]);
+     858                    .dwpsn  file "../lcdLib.c",line 77,column 3,is_stmt
+     859 000010 4D5C          MOV.B     lcdBuffer+0(r13),r12  ; [] |77| 
+         000012 0000!
+     860            $C$DW$58        .dwtag  DW_TAG_TI_branch
+     861                    .dwattr $C$DW$58, DW_AT_low_pc(0x00)
+     862                    .dwattr $C$DW$58, DW_AT_name("lcdWriteData")
+     863                    .dwattr $C$DW$58, DW_AT_TI_call
+     864 000014 12B0          CALL      #lcdWriteData         ; [] |77| 
+         000016 0000!
+     865                                                      ; [] |77| 
+     866            ;** 76  -----------------------    if ( (++i) < 16 ) goto g2;
+     867                    .dwpsn  file "../lcdLib.c",line 76,column 22,is_stmt
+     868 000018 531D          ADD.W     #1,r13                ; [] |76| 
+     869 00001a 903D          CMP.W     #16,r13               ; [] |76| 
+         00001c 0010 
+     870 00001e 3BF8          JL        $C$L5                 ; [] |76| 
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   18
+
+     871                                                      ; [] |76| 
+     872 000020       $C$DW$L$lcdUpdate$2$E:
+     873            ;* --------------------------------------------------------------------------*
+     874 000020       $C$L6:    
+     875            ;**     -----------------------g3:
+     876            ;** 79  -----------------------    lcdWriteCmd(0xc0u);
+     877                    .dwpsn  file "../lcdLib.c",line 79,column 2,is_stmt
+     878 000020 407C          MOV.B     #192,r12              ; [] |79| 
+         000022 00C0 
+     879            $C$DW$59        .dwtag  DW_TAG_TI_branch
+     880                    .dwattr $C$DW$59, DW_AT_low_pc(0x00)
+     881                    .dwattr $C$DW$59, DW_AT_name("lcdWriteCmd")
+     882                    .dwattr $C$DW$59, DW_AT_TI_call
+     883 000024 12B0          CALL      #lcdWriteCmd          ; [] |79| 
+         000026 0000!
+     884                                                      ; [] |79| 
+     885            ;** 80  -----------------------    if ( (i = 16) >= 32 ) goto g5;
+     886                    .dwpsn  file "../lcdLib.c",line 80,column 15,is_stmt
+     887 000028 403D          MOV.W     #16,r13               ; [] |80| 
+         00002a 0010 
+     888 00002c 903D          CMP.W     #32,r13               ; [] |80| 
+         00002e 0020 
+     889 000030 3408          JGE       $C$L8                 ; [] |80| 
+     890                                                      ; [] |80| 
+     891            ;* --------------------------------------------------------------------------*
+     892            ;*   BEGIN LOOP $C$L7
+     893            ;*
+     894            ;*   Loop source line                : 80
+     895            ;*   Loop closing brace source line  : 82
+     896            ;*   Known Minimum Trip Count        : 1
+     897            ;*   Known Maximum Trip Count        : 4294967295
+     898            ;*   Known Max Trip Count Factor     : 1
+     899            ;* --------------------------------------------------------------------------*
+     900 000032       $C$L7:    
+     901 000032       $C$DW$L$lcdUpdate$4$B:
+     902            ;**     -----------------------g4:
+     903            ;** 81  -----------------------    lcdWriteData(lcdBuffer[i]);
+     904                    .dwpsn  file "../lcdLib.c",line 81,column 3,is_stmt
+     905 000032 4D5C          MOV.B     lcdBuffer+0(r13),r12  ; [] |81| 
+         000034 0000!
+     906            $C$DW$60        .dwtag  DW_TAG_TI_branch
+     907                    .dwattr $C$DW$60, DW_AT_low_pc(0x00)
+     908                    .dwattr $C$DW$60, DW_AT_name("lcdWriteData")
+     909                    .dwattr $C$DW$60, DW_AT_TI_call
+     910 000036 12B0          CALL      #lcdWriteData         ; [] |81| 
+         000038 0000!
+     911                                                      ; [] |81| 
+     912            ;** 80  -----------------------    if ( (++i) < 32 ) goto g4;
+     913                    .dwpsn  file "../lcdLib.c",line 80,column 23,is_stmt
+     914 00003a 531D          ADD.W     #1,r13                ; [] |80| 
+     915 00003c 903D          CMP.W     #32,r13               ; [] |80| 
+         00003e 0020 
+     916 000040 3BF8          JL        $C$L7                 ; [] |80| 
+     917                                                      ; [] |80| 
+     918            ;**     -----------------------g5:
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   19
+
+     919            ;**     -----------------------    return;
+     920 000042       $C$DW$L$lcdUpdate$4$E:
+     921            ;* --------------------------------------------------------------------------*
+     922 000042       $C$L8:    
+     923                    .dwpsn  file "../lcdLib.c",line 83,column 1,is_stmt
+     924            $C$DW$61        .dwtag  DW_TAG_TI_branch
+     925                    .dwattr $C$DW$61, DW_AT_low_pc(0x00)
+     926                    .dwattr $C$DW$61, DW_AT_TI_return
+     927 000042 4130          RET       ; [] 
+     928                    ; [] 
+     929            
+     930            $C$DW$62        .dwtag  DW_TAG_TI_loop
+     931                    .dwattr $C$DW$62, DW_AT_name("C:\Users\Luiz\Google Drive\School_Work\2013 Spring\EE 3376 - Mic
+     932                    .dwattr $C$DW$62, DW_AT_TI_begin_file("../lcdLib.c")
+     933                    .dwattr $C$DW$62, DW_AT_TI_begin_line(0x50)
+     934                    .dwattr $C$DW$62, DW_AT_TI_end_line(0x52)
+     935            $C$DW$63        .dwtag  DW_TAG_TI_loop_range
+     936                    .dwattr $C$DW$63, DW_AT_low_pc($C$DW$L$lcdUpdate$4$B)
+     937                    .dwattr $C$DW$63, DW_AT_high_pc($C$DW$L$lcdUpdate$4$E)
+     938                    .dwendtag $C$DW$62
+     939            
+     940            
+     941            $C$DW$64        .dwtag  DW_TAG_TI_loop
+     942                    .dwattr $C$DW$64, DW_AT_name("C:\Users\Luiz\Google Drive\School_Work\2013 Spring\EE 3376 - Mic
+     943                    .dwattr $C$DW$64, DW_AT_TI_begin_file("../lcdLib.c")
+     944                    .dwattr $C$DW$64, DW_AT_TI_begin_line(0x4c)
+     945                    .dwattr $C$DW$64, DW_AT_TI_end_line(0x4e)
+     946            $C$DW$65        .dwtag  DW_TAG_TI_loop_range
+     947                    .dwattr $C$DW$65, DW_AT_low_pc($C$DW$L$lcdUpdate$2$B)
+     948                    .dwattr $C$DW$65, DW_AT_high_pc($C$DW$L$lcdUpdate$2$E)
+     949                    .dwendtag $C$DW$64
+     950            
+     951                    .dwattr $C$DW$55, DW_AT_TI_end_file("../lcdLib.c")
+     952                    .dwattr $C$DW$55, DW_AT_TI_end_line(0x53)
+     953                    .dwattr $C$DW$55, DW_AT_TI_end_column(0x01)
+     954                    .dwendentry
+     955                    .dwendtag $C$DW$55
+     956            
+     957 000000               .sect   ".text:iToS"
+     958                    .align  2
+     959                    .clink
+     960                    .global iToS
+     961            
+     962            $C$DW$66        .dwtag  DW_TAG_subprogram, DW_AT_name("iToS")
+     963                    .dwattr $C$DW$66, DW_AT_low_pc(iToS)
+     964                    .dwattr $C$DW$66, DW_AT_high_pc(0x00)
+     965                    .dwattr $C$DW$66, DW_AT_TI_symbol_name("iToS")
+     966                    .dwattr $C$DW$66, DW_AT_external
+     967                    .dwattr $C$DW$66, DW_AT_type(*$C$DW$T$26)
+     968                    .dwattr $C$DW$66, DW_AT_TI_begin_file("../lcdLib.c")
+     969                    .dwattr $C$DW$66, DW_AT_TI_begin_line(0x64)
+     970                    .dwattr $C$DW$66, DW_AT_TI_begin_column(0x07)
+     971                    .dwattr $C$DW$66, DW_AT_TI_max_frame_size(0x14)
+     972                    .dwpsn  file "../lcdLib.c",line 100,column 21,is_stmt,address iToS
+     973            
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   20
+
+     974                    .dwfde $C$DW$CIE, iToS
+     975            $C$DW$67        .dwtag  DW_TAG_formal_parameter, DW_AT_name("val")
+     976                    .dwattr $C$DW$67, DW_AT_TI_symbol_name("val")
+     977                    .dwattr $C$DW$67, DW_AT_type(*$C$DW$T$10)
+     978                    .dwattr $C$DW$67, DW_AT_location[DW_OP_reg12]
+     979            
+     980            ;*****************************************************************************
+     981            ;* FUNCTION NAME: iToS                                                       *
+     982            ;*                                                                           *
+     983            ;*   Regs Modified     : SP,SR,r10,r11,r12,r13,r14,r15                       *
+     984            ;*   Regs Used         : SP,SR,r10,r11,r12,r13,r14,r15                       *
+     985            ;*   Local Frame Size  : 0 Args + 16 Auto + 2 Save = 18 byte                 *
+     986            ;*****************************************************************************
+     987            
+     988            ;******************************************************************************
+     989            ;*                                                                            *
+     990            ;* Using -g (debug) with optimization (-o0) may disable key optimizations!    *
+     991            ;*                                                                            *
+     992            ;******************************************************************************
+     993 000000       iToS:
+     994            ;* --------------------------------------------------------------------------*
+     995                    .dwcfi  cfa_offset, 2
+     996                    .dwcfi  save_reg_to_mem, 16, -2
+     997 000000 120A          PUSH.W    r10                   ; [] 
+     998                    .dwcfi  cfa_offset, 4
+     999                    .dwcfi  save_reg_to_mem, 10, -4
+    1000 000002 8031          SUB.W     #16,SP                ; [] 
+         000004 0010 
+    1001                    .dwcfi  cfa_offset, 20
+    1002            ;* r12   assigned to val
+    1003            $C$DW$68        .dwtag  DW_TAG_variable, DW_AT_name("val")
+    1004                    .dwattr $C$DW$68, DW_AT_TI_symbol_name("val")
+    1005                    .dwattr $C$DW$68, DW_AT_type(*$C$DW$T$10)
+    1006                    .dwattr $C$DW$68, DW_AT_location[DW_OP_reg12]
+    1007            ;* r14   assigned to p
+    1008            $C$DW$69        .dwtag  DW_TAG_variable, DW_AT_name("p")
+    1009                    .dwattr $C$DW$69, DW_AT_TI_symbol_name("p")
+    1010                    .dwattr $C$DW$69, DW_AT_type(*$C$DW$T$26)
+    1011                    .dwattr $C$DW$69, DW_AT_location[DW_OP_reg14]
+    1012            ;* r10   assigned to d
+    1013            $C$DW$70        .dwtag  DW_TAG_variable, DW_AT_name("d")
+    1014                    .dwattr $C$DW$70, DW_AT_TI_symbol_name("d")
+    1015                    .dwattr $C$DW$70, DW_AT_type(*$C$DW$T$6)
+    1016                    .dwattr $C$DW$70, DW_AT_location[DW_OP_reg10]
+    1017            ;* r13   assigned to i
+    1018            $C$DW$71        .dwtag  DW_TAG_variable, DW_AT_name("i")
+    1019                    .dwattr $C$DW$71, DW_AT_TI_symbol_name("i")
+    1020                    .dwattr $C$DW$71, DW_AT_type(*$C$DW$T$6)
+    1021                    .dwattr $C$DW$71, DW_AT_location[DW_OP_reg13]
+    1022            ;* r11   assigned to zero
+    1023            $C$DW$72        .dwtag  DW_TAG_variable, DW_AT_name("zero")
+    1024                    .dwattr $C$DW$72, DW_AT_TI_symbol_name("zero")
+    1025                    .dwattr $C$DW$72, DW_AT_type(*$C$DW$T$6)
+    1026                    .dwattr $C$DW$72, DW_AT_location[DW_OP_reg11]
+    1027            ;* r15   assigned to test
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   21
+
+    1028            $C$DW$73        .dwtag  DW_TAG_variable, DW_AT_name("test")
+    1029                    .dwattr $C$DW$73, DW_AT_TI_symbol_name("test")
+    1030                    .dwattr $C$DW$73, DW_AT_type(*$C$DW$T$11)
+    1031                    .dwattr $C$DW$73, DW_AT_location[DW_OP_reg15]
+    1032            ;* r12   assigned to uval
+    1033            $C$DW$74        .dwtag  DW_TAG_variable, DW_AT_name("uval")
+    1034                    .dwattr $C$DW$74, DW_AT_TI_symbol_name("uval")
+    1035                    .dwattr $C$DW$74, DW_AT_type(*$C$DW$T$11)
+    1036                    .dwattr $C$DW$74, DW_AT_location[DW_OP_reg12]
+    1037            $C$DW$75        .dwtag  DW_TAG_variable, DW_AT_name("s")
+    1038                    .dwattr $C$DW$75, DW_AT_TI_symbol_name("s")
+    1039                    .dwattr $C$DW$75, DW_AT_type(*$C$DW$T$35)
+    1040                    .dwattr $C$DW$75, DW_AT_location[DW_OP_breg1 0]
+    1041            ;** 106 -----------------------    uval = val;
+    1042                    .dwpsn  file "../lcdLib.c",line 106,column 15,is_stmt
+    1043            ;** 108 -----------------------    p = &s[0];
+    1044                    .dwpsn  file "../lcdLib.c",line 108,column 2,is_stmt
+    1045 000006 410E          MOV.W     SP,r14                ; [] |108| 
+    1046            ;** 110 -----------------------    if ( val >= 0 ) goto g3;
+    1047                    .dwpsn  file "../lcdLib.c",line 110,column 2,is_stmt
+    1048 000008 930C          TST.W     r12                   ; [] |110| 
+    1049 00000a 3406          JGE       $C$L9                 ; [] |110| 
+    1050                                                      ; [] |110| 
+    1051            ;* --------------------------------------------------------------------------*
+    1052            ;** 111 -----------------------    uval = -(unsigned)val;
+    1053                    .dwpsn  file "../lcdLib.c",line 111,column 3,is_stmt
+    1054 00000c E33C          INV.W     r12                   ; [] |111| 
+    1055 00000e 531C          ADD.W     #1,r12                ; [] |111| 
+    1056            ;** 112 -----------------------    *p++ = 45u;
+    1057                    .dwpsn  file "../lcdLib.c",line 112,column 3,is_stmt
+    1058 000010 531E          ADD.W     #1,r14                ; [] |112| 
+    1059 000012 40FE          MOV.B     #45,-1(r14)           ; [] |112| 
+         000014 002D 
+         000016 FFFF 
+    1060            ;* --------------------------------------------------------------------------*
+    1061 000018       $C$L9:    
+    1062            ;**     -----------------------g3:
+    1063            ;** 115 -----------------------    zero = 1u;
+    1064                    .dwpsn  file "../lcdLib.c",line 115,column 2,is_stmt
+    1065 000018 435B          MOV.B     #1,r11                ; [] |115| 
+    1066            ;** 117 -----------------------    i = 4u;
+    1067                    .dwpsn  file "../lcdLib.c",line 117,column 2,is_stmt
+    1068 00001a 426D          MOV.B     #4,r13                ; [] |117| 
+    1069            ;* --------------------------------------------------------------------------*
+    1070            ;*   BEGIN LOOP $C$L10
+    1071            ;*
+    1072            ;*   Loop source line                : 118
+    1073            ;*   Loop closing brace source line  : 132
+    1074            ;*   Known Minimum Trip Count        : 1
+    1075            ;*   Known Maximum Trip Count        : 4294967295
+    1076            ;*   Known Max Trip Count Factor     : 1
+    1077            ;* --------------------------------------------------------------------------*
+    1078 00001c       $C$L10:    
+    1079 00001c       $C$DW$L$iToS$4$B:
+    1080            ;**     -----------------------g4:
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   22
+
+    1081            ;** 119 -----------------------    if ( --i ) goto g6;
+    1082                    .dwpsn  file "../lcdLib.c",line 119,column 3,is_stmt
+    1083 00001c 835D          SUB.B     #1,r13                ; [] |119| 
+    1084 00001e 2003          JNE       $C$L11                ; [] |119| 
+    1085                                                      ; [] |119| 
+    1086 000020       $C$DW$L$iToS$4$E:
+    1087            ;* --------------------------------------------------------------------------*
+    1088 000020       $C$DW$L$iToS$5$B:
+    1089            ;** 120 -----------------------    test = 10u;
+    1090                    .dwpsn  file "../lcdLib.c",line 120,column 14,is_stmt
+    1091 000020 403F          MOV.W     #10,r15               ; [] |120| 
+         000022 000A 
+    1092            ;** 120 -----------------------    goto g7;
+    1093 000024 3C0C          JMP       $C$L14                ; [] |120| 
+    1094                                                      ; [] |120| 
+    1095 000026       $C$DW$L$iToS$5$E:
+    1096            ;* --------------------------------------------------------------------------*
+    1097 000026       $C$L11:    
+    1098 000026       $C$DW$L$iToS$6$B:
+    1099            ;**     -----------------------g6:
+    1100            ;** 121 -----------------------    (i == 1) ? (test = 100u) : (test = (i == 2) ? 1000u : 10000u);
+    1101                    .dwpsn  file "../lcdLib.c",line 121,column 19,is_stmt
+    1102 000026 935D          CMP.B     #1,r13                ; [] |121| 
+    1103 000028 2003          JNE       $C$L12                ; [] |121| 
+    1104                                                      ; [] |121| 
+    1105 00002a       $C$DW$L$iToS$6$E:
+    1106            ;* --------------------------------------------------------------------------*
+    1107 00002a       $C$DW$L$iToS$7$B:
+    1108 00002a 403F          MOV.W     #100,r15              ; [] |121| 
+         00002c 0064 
+    1109 00002e 3C07          JMP       $C$L14                ; [] |121| 
+    1110                                                      ; [] |121| 
+    1111 000030       $C$DW$L$iToS$7$E:
+    1112            ;* --------------------------------------------------------------------------*
+    1113 000030       $C$L12:    
+    1114 000030       $C$DW$L$iToS$8$B:
+    1115 000030 936D          CMP.B     #2,r13                ; [] |121| 
+    1116 000032 2003          JNE       $C$L13                ; [] |121| 
+    1117                                                      ; [] |121| 
+    1118 000034       $C$DW$L$iToS$8$E:
+    1119            ;* --------------------------------------------------------------------------*
+    1120 000034       $C$DW$L$iToS$9$B:
+    1121 000034 403F          MOV.W     #1000,r15             ; [] |121| 
+         000036 03E8 
+    1122 000038 3C02          JMP       $C$L14                ; [] |121| 
+    1123                                                      ; [] |121| 
+    1124 00003a       $C$DW$L$iToS$9$E:
+    1125            ;* --------------------------------------------------------------------------*
+    1126 00003a       $C$L13:    
+    1127 00003a       $C$DW$L$iToS$10$B:
+    1128 00003a 403F          MOV.W     #10000,r15            ; [] |121| 
+         00003c 2710 
+    1129 00003e       $C$DW$L$iToS$10$E:
+    1130            ;* --------------------------------------------------------------------------*
+    1131 00003e       $C$L14:    
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   23
+
+    1132 00003e       $C$DW$L$iToS$11$B:
+    1133            ;**     -----------------------g7:
+    1134            ;** 125 -----------------------    d = 48u;
+    1135                    .dwpsn  file "../lcdLib.c",line 125,column 8,is_stmt
+    1136 00003e 407A          MOV.B     #48,r10               ; [] |125| 
+         000040 0030 
+    1137            ;** 125 -----------------------    if ( uval < test ) goto g9;
+    1138                    .dwpsn  file "../lcdLib.c",line 125,column 17,is_stmt
+    1139 000042 9F0C          CMP.W     r15,r12               ; [] |125| 
+    1140 000044 2805          JLO       $C$L16                ; [] |125| 
+    1141                                                      ; [] |125| 
+    1142 000046       $C$DW$L$iToS$11$E:
+    1143            ;* --------------------------------------------------------------------------*
+    1144            ;*   BEGIN LOOP $C$L15
+    1145            ;*
+    1146            ;*   Loop source line                : 125
+    1147            ;*   Loop closing brace source line  : 128
+    1148            ;*   Known Minimum Trip Count        : 1
+    1149            ;*   Known Maximum Trip Count        : 4294967295
+    1150            ;*   Known Max Trip Count Factor     : 1
+    1151            ;* --------------------------------------------------------------------------*
+    1152 000046       $C$L15:    
+    1153 000046       $C$DW$L$iToS$12$B:
+    1154            ;**     -----------------------g8:
+    1155            ;** 126 -----------------------    ++d;
+    1156                    .dwpsn  file "../lcdLib.c",line 126,column 4,is_stmt
+    1157 000046 535A          ADD.B     #1,r10                ; [] |126| 
+    1158            ;** 127 -----------------------    zero = 0u;
+    1159                    .dwpsn  file "../lcdLib.c",line 127,column 4,is_stmt
+    1160 000048 434B          MOV.B     #0,r11                ; [] |127| 
+    1161            ;** 125 -----------------------    uval -= test;
+    1162                    .dwpsn  file "../lcdLib.c",line 125,column 31,is_stmt
+    1163 00004a 8F0C          SUB.W     r15,r12               ; [] |125| 
+    1164            ;** 125 -----------------------    if ( uval >= test ) goto g8;
+    1165                    .dwpsn  file "../lcdLib.c",line 125,column 17,is_stmt
+    1166 00004c 9F0C          CMP.W     r15,r12               ; [] |125| 
+    1167 00004e 2FFB          JHS       $C$L15                ; [] |125| 
+    1168                                                      ; [] |125| 
+    1169 000050       $C$DW$L$iToS$12$E:
+    1170            ;* --------------------------------------------------------------------------*
+    1171 000050       $C$L16:    
+    1172 000050       $C$DW$L$iToS$13$B:
+    1173            ;**     -----------------------g9:
+    1174            ;** 130 -----------------------    if ( zero ) goto g11;
+    1175                    .dwpsn  file "../lcdLib.c",line 130,column 3,is_stmt
+    1176 000050 934B          TST.B     r11                   ; [] |130| 
+    1177 000052 2003          JNE       $C$L17                ; [] |130| 
+    1178                                                      ; [] |130| 
+    1179 000054       $C$DW$L$iToS$13$E:
+    1180            ;* --------------------------------------------------------------------------*
+    1181 000054       $C$DW$L$iToS$14$B:
+    1182            ;** 131 -----------------------    *p++ = d;
+    1183                    .dwpsn  file "../lcdLib.c",line 131,column 4,is_stmt
+    1184 000054 531E          ADD.W     #1,r14                ; [] |131| 
+    1185 000056 4ACE          MOV.B     r10,-1(r14)           ; [] |131| 
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   24
+
+         000058 FFFF 
+    1186 00005a       $C$DW$L$iToS$14$E:
+    1187            ;* --------------------------------------------------------------------------*
+    1188 00005a       $C$L17:    
+    1189 00005a       $C$DW$L$iToS$15$B:
+    1190            ;**     -----------------------g11:
+    1191            ;** 132 -----------------------    if ( i ) goto g4;
+    1192                    .dwpsn  file "../lcdLib.c",line 132,column 3,is_stmt
+    1193 00005a 934D          TST.B     r13                   ; [] |132| 
+    1194 00005c 23DF          JNE       $C$L10                ; [] |132| 
+    1195                                                      ; [] |132| 
+    1196 00005e       $C$DW$L$iToS$15$E:
+    1197            ;* --------------------------------------------------------------------------*
+    1198            ;** 134 -----------------------    *p++ = uval+48;
+    1199                    .dwpsn  file "../lcdLib.c",line 134,column 2,is_stmt
+    1200 00005e 531E          ADD.W     #1,r14                ; [] |134| 
+    1201 000060 507C          ADD.B     #48,r12               ; [] |134| 
+         000062 0030 
+    1202 000064 4CCE          MOV.B     r12,-1(r14)           ; [] |134| 
+         000066 FFFF 
+    1203            ;** 135 -----------------------    *p++ = 0u;
+    1204                    .dwpsn  file "../lcdLib.c",line 135,column 2,is_stmt
+    1205 000068 531E          ADD.W     #1,r14                ; [] |135| 
+    1206 00006a 43CE          MOV.B     #0,-1(r14)            ; [] |135| 
+         00006c FFFF 
+    1207            ;** 137 -----------------------    return &s;
+    1208                    .dwpsn  file "../lcdLib.c",line 137,column 2,is_stmt
+    1209                    .dwpsn  file "../lcdLib.c",line 138,column 1,is_stmt
+    1210 00006e 410C          MOV.W     SP,r12                ; [] |137| 
+    1211 000070 5031          ADD.W     #16,SP                ; [] |137| 
+         000072 0010 
+    1212                    .dwcfi  cfa_offset, 4
+    1213 000074 413A          POP       r10                   ; [] |137| 
+    1214                    .dwcfi  restore_reg, 10
+    1215                    .dwcfi  cfa_offset, 2
+    1216            $C$DW$76        .dwtag  DW_TAG_TI_branch
+    1217                    .dwattr $C$DW$76, DW_AT_low_pc(0x00)
+    1218                    .dwattr $C$DW$76, DW_AT_TI_return
+    1219 000076 4130          RET       ; [] |137| 
+    1220                    ; [] |137| 
+    1221            
+    1222            $C$DW$77        .dwtag  DW_TAG_TI_loop
+    1223                    .dwattr $C$DW$77, DW_AT_name("C:\Users\Luiz\Google Drive\School_Work\2013 Spring\EE 3376 - Mic
+    1224                    .dwattr $C$DW$77, DW_AT_TI_begin_file("../lcdLib.c")
+    1225                    .dwattr $C$DW$77, DW_AT_TI_begin_line(0x76)
+    1226                    .dwattr $C$DW$77, DW_AT_TI_end_line(0x84)
+    1227            $C$DW$78        .dwtag  DW_TAG_TI_loop_range
+    1228                    .dwattr $C$DW$78, DW_AT_low_pc($C$DW$L$iToS$4$B)
+    1229                    .dwattr $C$DW$78, DW_AT_high_pc($C$DW$L$iToS$4$E)
+    1230            $C$DW$79        .dwtag  DW_TAG_TI_loop_range
+    1231                    .dwattr $C$DW$79, DW_AT_low_pc($C$DW$L$iToS$8$B)
+    1232                    .dwattr $C$DW$79, DW_AT_high_pc($C$DW$L$iToS$8$E)
+    1233            $C$DW$80        .dwtag  DW_TAG_TI_loop_range
+    1234                    .dwattr $C$DW$80, DW_AT_low_pc($C$DW$L$iToS$6$B)
+    1235                    .dwattr $C$DW$80, DW_AT_high_pc($C$DW$L$iToS$6$E)
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   25
+
+    1236            $C$DW$81        .dwtag  DW_TAG_TI_loop_range
+    1237                    .dwattr $C$DW$81, DW_AT_low_pc($C$DW$L$iToS$5$B)
+    1238                    .dwattr $C$DW$81, DW_AT_high_pc($C$DW$L$iToS$5$E)
+    1239            $C$DW$82        .dwtag  DW_TAG_TI_loop_range
+    1240                    .dwattr $C$DW$82, DW_AT_low_pc($C$DW$L$iToS$7$B)
+    1241                    .dwattr $C$DW$82, DW_AT_high_pc($C$DW$L$iToS$7$E)
+    1242            $C$DW$83        .dwtag  DW_TAG_TI_loop_range
+    1243                    .dwattr $C$DW$83, DW_AT_low_pc($C$DW$L$iToS$9$B)
+    1244                    .dwattr $C$DW$83, DW_AT_high_pc($C$DW$L$iToS$9$E)
+    1245            $C$DW$84        .dwtag  DW_TAG_TI_loop_range
+    1246                    .dwattr $C$DW$84, DW_AT_low_pc($C$DW$L$iToS$10$B)
+    1247                    .dwattr $C$DW$84, DW_AT_high_pc($C$DW$L$iToS$10$E)
+    1248            $C$DW$85        .dwtag  DW_TAG_TI_loop_range
+    1249                    .dwattr $C$DW$85, DW_AT_low_pc($C$DW$L$iToS$11$B)
+    1250                    .dwattr $C$DW$85, DW_AT_high_pc($C$DW$L$iToS$11$E)
+    1251            $C$DW$86        .dwtag  DW_TAG_TI_loop_range
+    1252                    .dwattr $C$DW$86, DW_AT_low_pc($C$DW$L$iToS$13$B)
+    1253                    .dwattr $C$DW$86, DW_AT_high_pc($C$DW$L$iToS$13$E)
+    1254            $C$DW$87        .dwtag  DW_TAG_TI_loop_range
+    1255                    .dwattr $C$DW$87, DW_AT_low_pc($C$DW$L$iToS$14$B)
+    1256                    .dwattr $C$DW$87, DW_AT_high_pc($C$DW$L$iToS$14$E)
+    1257            $C$DW$88        .dwtag  DW_TAG_TI_loop_range
+    1258                    .dwattr $C$DW$88, DW_AT_low_pc($C$DW$L$iToS$15$B)
+    1259                    .dwattr $C$DW$88, DW_AT_high_pc($C$DW$L$iToS$15$E)
+    1260            
+    1261            $C$DW$89        .dwtag  DW_TAG_TI_loop
+    1262                    .dwattr $C$DW$89, DW_AT_name("C:\Users\Luiz\Google Drive\School_Work\2013 Spring\EE 3376 - Mic
+    1263                    .dwattr $C$DW$89, DW_AT_TI_begin_file("../lcdLib.c")
+    1264                    .dwattr $C$DW$89, DW_AT_TI_begin_line(0x7d)
+    1265                    .dwattr $C$DW$89, DW_AT_TI_end_line(0x80)
+    1266            $C$DW$90        .dwtag  DW_TAG_TI_loop_range
+    1267                    .dwattr $C$DW$90, DW_AT_low_pc($C$DW$L$iToS$12$B)
+    1268                    .dwattr $C$DW$90, DW_AT_high_pc($C$DW$L$iToS$12$E)
+    1269                    .dwendtag $C$DW$89
+    1270            
+    1271                    .dwendtag $C$DW$77
+    1272            
+    1273                    .dwattr $C$DW$66, DW_AT_TI_end_file("../lcdLib.c")
+    1274                    .dwattr $C$DW$66, DW_AT_TI_end_line(0x8a)
+    1275                    .dwattr $C$DW$66, DW_AT_TI_end_column(0x01)
+    1276                    .dwendentry
+    1277                    .dwendtag $C$DW$66
+    1278            
+    1279            ;*****************************************************************************
+    1280            ;* UNDEFINED EXTERNAL REFERENCES                                             *
+    1281            ;*****************************************************************************
+    1282                    .global P2OUT
+    1283                    .global P2DIR
+    1284                    .global I_LSR_4
+    1285                    .global I_ASR_4
+    1286                    .global I_LSL_4
+    1287            
+    1288            ;******************************************************************************
+    1289            ;* TYPE INFORMATION                                                           *
+    1290            ;******************************************************************************
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   26
+
+    1291            $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1292                    .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1293                    .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1294                    .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1295            $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1296                    .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1297                    .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1298                    .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1299            $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1300                    .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1301                    .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1302                    .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1303            $C$DW$T$28      .dwtag  DW_TAG_volatile_type
+    1304                    .dwattr $C$DW$T$28, DW_AT_type(*$C$DW$T$6)
+    1305            $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1306                    .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1307                    .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1308                    .dwattr $C$DW$T$7, DW_AT_byte_size(0x02)
+    1309            $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1310                    .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1311                    .dwattr $C$DW$T$8, DW_AT_name("short")
+    1312                    .dwattr $C$DW$T$8, DW_AT_byte_size(0x02)
+    1313            $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1314                    .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1315                    .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1316                    .dwattr $C$DW$T$9, DW_AT_byte_size(0x02)
+    1317            $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1318                    .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1319                    .dwattr $C$DW$T$10, DW_AT_name("int")
+    1320                    .dwattr $C$DW$T$10, DW_AT_byte_size(0x02)
+    1321            $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1322                    .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1323                    .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1324                    .dwattr $C$DW$T$11, DW_AT_byte_size(0x02)
+    1325            $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1326                    .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1327                    .dwattr $C$DW$T$12, DW_AT_name("long")
+    1328                    .dwattr $C$DW$T$12, DW_AT_byte_size(0x04)
+    1329            $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1330                    .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1331                    .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1332                    .dwattr $C$DW$T$13, DW_AT_byte_size(0x04)
+    1333            $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1334                    .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1335                    .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1336                    .dwattr $C$DW$T$14, DW_AT_byte_size(0x08)
+    1337            $C$DW$T$15      .dwtag  DW_TAG_base_type
+    1338                    .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+    1339                    .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    1340                    .dwattr $C$DW$T$15, DW_AT_byte_size(0x08)
+    1341            $C$DW$T$16      .dwtag  DW_TAG_base_type
+    1342                    .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+    1343                    .dwattr $C$DW$T$16, DW_AT_name("float")
+    1344                    .dwattr $C$DW$T$16, DW_AT_byte_size(0x04)
+    1345            $C$DW$T$17      .dwtag  DW_TAG_base_type
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   27
+
+    1346                    .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    1347                    .dwattr $C$DW$T$17, DW_AT_name("double")
+    1348                    .dwattr $C$DW$T$17, DW_AT_byte_size(0x04)
+    1349            $C$DW$T$18      .dwtag  DW_TAG_base_type
+    1350                    .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    1351                    .dwattr $C$DW$T$18, DW_AT_name("long double")
+    1352                    .dwattr $C$DW$T$18, DW_AT_byte_size(0x04)
+    1353            $C$DW$T$25      .dwtag  DW_TAG_base_type
+    1354                    .dwattr $C$DW$T$25, DW_AT_encoding(DW_ATE_unsigned_char)
+    1355                    .dwattr $C$DW$T$25, DW_AT_name("unsigned char")
+    1356                    .dwattr $C$DW$T$25, DW_AT_byte_size(0x01)
+    1357            $C$DW$T$26      .dwtag  DW_TAG_pointer_type
+    1358                    .dwattr $C$DW$T$26, DW_AT_type(*$C$DW$T$25)
+    1359                    .dwattr $C$DW$T$26, DW_AT_address_class(0x10)
+    1360            
+    1361            $C$DW$T$34      .dwtag  DW_TAG_array_type
+    1362                    .dwattr $C$DW$T$34, DW_AT_type(*$C$DW$T$25)
+    1363                    .dwattr $C$DW$T$34, DW_AT_language(DW_LANG_C)
+    1364                    .dwattr $C$DW$T$34, DW_AT_byte_size(0x20)
+    1365            $C$DW$91        .dwtag  DW_TAG_subrange_type
+    1366                    .dwattr $C$DW$91, DW_AT_upper_bound(0x1f)
+    1367                    .dwendtag $C$DW$T$34
+    1368            
+    1369            
+    1370            $C$DW$T$35      .dwtag  DW_TAG_array_type
+    1371                    .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$25)
+    1372                    .dwattr $C$DW$T$35, DW_AT_language(DW_LANG_C)
+    1373                    .dwattr $C$DW$T$35, DW_AT_byte_size(0x10)
+    1374            $C$DW$92        .dwtag  DW_TAG_subrange_type
+    1375                    .dwattr $C$DW$92, DW_AT_upper_bound(0x0f)
+    1376                    .dwendtag $C$DW$T$35
+    1377            
+    1378                    .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1379            
+    1380            ;***************************************************************
+    1381            ;* DWARF CIE ENTRIES                                           *
+    1382            ;***************************************************************
+    1383            
+    1384            $C$DW$CIE       .dwcie 16
+    1385                    .dwcfi  cfa_register, 1
+    1386                    .dwcfi  cfa_offset, 0
+    1387                    .dwcfi  undefined, 0
+    1388                    .dwcfi  undefined, 1
+    1389                    .dwcfi  undefined, 2
+    1390                    .dwcfi  undefined, 3
+    1391                    .dwcfi  same_value, 4
+    1392                    .dwcfi  same_value, 5
+    1393                    .dwcfi  same_value, 6
+    1394                    .dwcfi  same_value, 7
+    1395                    .dwcfi  same_value, 8
+    1396                    .dwcfi  same_value, 9
+    1397                    .dwcfi  same_value, 10
+    1398                    .dwcfi  undefined, 11
+    1399                    .dwcfi  undefined, 12
+    1400                    .dwcfi  undefined, 13
+MSP430 Assembler PC v4.0.0 Tue Apr 16 11:04:10 2013
+
+Tools Copyright (c) 2003-2011 Texas Instruments Incorporated
+lcdLib.asm                                                           PAGE   28
+
+    1401                    .dwcfi  undefined, 14
+    1402                    .dwcfi  undefined, 15
+    1403                    .dwcfi  undefined, 16
+    1404                    .dwendentry
+    1405            
+    1406            ;***************************************************************
+    1407            ;* DWARF REGISTER MAP                                          *
+    1408            ;***************************************************************
+    1409            
+    1410            $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    1411                    .dwattr $C$DW$93, DW_AT_location[DW_OP_reg0]
+    1412            $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    1413                    .dwattr $C$DW$94, DW_AT_location[DW_OP_reg1]
+    1414            $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SR")
+    1415                    .dwattr $C$DW$95, DW_AT_location[DW_OP_reg2]
+    1416            $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CG")
+    1417                    .dwattr $C$DW$96, DW_AT_location[DW_OP_reg3]
+    1418            $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r4")
+    1419                    .dwattr $C$DW$97, DW_AT_location[DW_OP_reg4]
+    1420            $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r5")
+    1421                    .dwattr $C$DW$98, DW_AT_location[DW_OP_reg5]
+    1422            $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r6")
+    1423                    .dwattr $C$DW$99, DW_AT_location[DW_OP_reg6]
+    1424            $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r7")
+    1425                    .dwattr $C$DW$100, DW_AT_location[DW_OP_reg7]
+    1426            $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r8")
+    1427                    .dwattr $C$DW$101, DW_AT_location[DW_OP_reg8]
+    1428            $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r9")
+    1429                    .dwattr $C$DW$102, DW_AT_location[DW_OP_reg9]
+    1430            $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r10")
+    1431                    .dwattr $C$DW$103, DW_AT_location[DW_OP_reg10]
+    1432            $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r11")
+    1433                    .dwattr $C$DW$104, DW_AT_location[DW_OP_reg11]
+    1434            $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r12")
+    1435                    .dwattr $C$DW$105, DW_AT_location[DW_OP_reg12]
+    1436            $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r13")
+    1437                    .dwattr $C$DW$106, DW_AT_location[DW_OP_reg13]
+    1438            $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r14")
+    1439                    .dwattr $C$DW$107, DW_AT_location[DW_OP_reg14]
+    1440            $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("r15")
+    1441                    .dwattr $C$DW$108, DW_AT_location[DW_OP_reg15]
+    1442            $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    1443                    .dwattr $C$DW$109, DW_AT_location[DW_OP_reg16]
+    1444                    .dwendtag $C$DW$CU
+    1445            
+
+No Assembly Errors, No Assembly Warnings
